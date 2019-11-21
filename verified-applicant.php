@@ -39,21 +39,54 @@
                       <th>Applicant Name</th>
                       <th>Application Status</th>
                       <th>Payment Status</th>
+                      <th>Logs</th>
                       <th>Action</th>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>QWERTY</td>
-                        <td>Juan Dela Cruz</td>
-                        <td>Pending</td>
-                        <td>Unpaid</td>
-                        <td>Payment</td>
-                      </tr>
+                    <?php
+                        // Include config file
+                        require_once 'config.php';
+                        // Attempt select query execution
+                        $query = "SELECT * FROM applicant WHERE application_status='Verified' ORDER BY last_name asc";
+                        if($result = mysqli_query($link, $query)){
+                          if(mysqli_num_rows($result) > 0){
+                            $ctr = 0;
+                            while($row = mysqli_fetch_array($result)){
+                              $ctr++;
+                              echo "<tr>";
+                              echo "<td>" . $ctr . "</td>";
+                              echo "<td> Coming Soon! </td>";
+                              echo "<td>" . $row['last_name'].", ".$row['first_name']." ".$row['middle_name']." ".$row['suffix'] . "</td>";
 
+                              echo "<td>" . $row['application_status'] . "</td>";
+                              echo "<td>" . $row['payment_status'] . "</td>";
+                              echo "<td>" . $row['encoded_by'] ." ". $row['encoded_at'] . "</td>";
+                              echo "<td>";
+                              echo "<a href='#'>view</a> <a href='#'>verify</a>";
+                              echo "</td>";
+
+
+                              //echo "<td>";
+                              //echo "<a href='user-update.php?id=". $row['id'] ."' title='Update Record' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
+                              //echo " &nbsp; <a href='user-delete.php?id=". $row['id'] ."' title='Delete Record' data-toggle='tooltip'><span class='glyphicon glyphicon-trash'></span></a>";
+
+                              //echo "</td>";
+                              echo "</tr>";
+                            }
+                            // Free result set
+                            mysqli_free_result($result);
+                          } else{
+                            echo "<p class='lead'><em>No records were found.</em></p>";
+                          }
+                        } else{
+                          echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+                        }
+
+                    // Close connection
+                    mysqli_close($link);
+                    ?>
                     </tbody>
                     <tfooter></tfooter>
-                    
                   </table>
                 </div>
               </div>
