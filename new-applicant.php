@@ -1,41 +1,43 @@
 <?php include('template/session.php'); ?>
 
 <?php
+  require_once "config.php";
+
   $alertMessage =
   $police_station =
-  $application_type = 
-  $purpose = 
-  $first_name = 
-  $middle_name = 
+  $application_type =
+  $purpose =
+  $first_name =
+  $middle_name =
   $last_name =
-  $suffix = 
-  $address = 
-  $dob = 
-  $pob = 
-  $gender = 
-  $nationality = 
-  $civil_status = 
-  $religion = 
-  $height = 
-  $weight = 
-  $hair_color = 
-  $eye_color = 
-  $contact_no = 
-  $mole = 
-  $scar = 
-  $tattoo = 
-  $birthmark = 
-  $harelip = 
-  $skin_tag = 
-  $e_contact_person = 
-  $e_contact_no = 
-  $application_status = 
-  $payment_status = 
-  $encoding_mode = 
-  $encoded_by = 
+  $suffix =
+  $address =
+  $dob =
+  $pob =
+  $gender =
+  $nationality =
+  $civil_status =
+  $religion =
+  $height =
+  $weight =
+  $hair_color =
+  $eye_color =
+  $contact_no =
+  $mole =
+  $scar =
+  $tattoo =
+  $birthmark =
+  $harelip =
+  $skin_tag =
+  $e_contact_person =
+  $e_contact_no =
+  $application_status =
+  $payment_status =
+  $encoding_mode =
+  $encoded_by =
   $encoded_at = "";
 
-  require_once "config.php";
+
   if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
     $police_station = test_input($_POST['police_station']);
@@ -48,7 +50,7 @@
     $address = test_input($_POST['address']);
     $dob = test_input($_POST['dob']);
     $pob = test_input($_POST['pob']);
-    $gender = test_input($_POST['genderr']);
+    $gender = test_input($_POST['gender']);
     $nationality = test_input($_POST['nationality']);
     $civil_status = test_input($_POST['civil_status']);
     $religion = test_input($_POST['religion']);
@@ -79,83 +81,83 @@
       $custnewID = $IDtype.$y.$custID; //Prepare custom ID
       $ecoded_by = $_SESSION["username"];
 
-      $query = "INSERT INTO applicant 
-      (custID, 
-      police_station, 
-      application_type, 
-      purpose, 
-      first_name, 
-      middle_name, 
-      last_name, 
-      suffix, 
-      address, 
-      dob, 
-      pob, 
-      gender, 
-      nationality, 
-      civil_status, 
-      religion, 
-      height, 
-      weight, 
-      hair_color, 
-      eye_color, 
-      contact_no, 
-      mole, 
-      scar, 
-      tattoo, 
-      birthmark, 
-      harelip, 
-      skin_tag, 
-      e_contact_person, 
-      e_contact_no, 
-      application_status, 
-      payment_status, 
-      encoding_mode, 
-      encoded_by) 
+      $query = "INSERT INTO applicant
+      (custID,
+      police_station,
+      application_type,
+      purpose,
+      first_name,
+      middle_name,
+      last_name,
+      suffix,
+      address,
+      dob,
+      pob,
+      gender,
+      nationality,
+      civil_status,
+      religion,
+      height,
+      weight,
+      hair_color,
+      eye_color,
+      contact_no,
+      mole,
+      scar,
+      tattoo,
+      birthmark,
+      harelip,
+      skin_tag,
+      e_contact_person,
+      e_contact_no,
+      application_status,
+      payment_status,
+      encoding_mode,
+      encoded_by)
 
-      VALUES 
-      ('$custnewID', 
-      '$police_station', 
-      '$application_type', 
-      '$purpose', 
-      '$first_name', 
-      '$middle_name', 
-      '$last_name', 
-      '$suffix', 
-      '$address', 
-      '$dob', 
-      '$pob', 
-      '$gender', 
-      '$nationality', 
-      '$civil_status', 
-      '$religion', 
-      '$height', 
-      '$weight', 
-      '$hair_color', 
-      '$eye_color', 
-      '$contact_no', 
-      '$mole', 
-      '$scar', 
-      '$tattoo', 
-      '$birthmark', 
-      '$harelip', 
-      '$skin_tag', 
-      '$e_contact_person', 
-      '$e_contact_no', 
-      'Pending', 
-      'Unpaid', 
-      'Walkin', 
+      VALUES
+      ('$custnewID',
+      '$police_station',
+      '$application_type',
+      '$purpose',
+      '$first_name',
+      '$middle_name',
+      '$last_name',
+      '$suffix',
+      '$address',
+      '$dob',
+      '$pob',
+      '$gender',
+      '$nationality',
+      '$civil_status',
+      '$religion',
+      '$height',
+      '$weight',
+      '$hair_color',
+      '$eye_color',
+      '$contact_no',
+      '$mole',
+      '$scar',
+      '$tattoo',
+      '$birthmark',
+      '$harelip',
+      '$skin_tag',
+      '$e_contact_person',
+      '$e_contact_no',
+      'Pending',
+      'Unpaid',
+      'Walkin',
       '$encoded_by')";
 
       $result = mysqli_query($link, $query) or die(mysqli_error($link)); //Execute  insert query
-                                    
+
       if($result){
         //echo "<script>alert('5');</script>";
       //header("Location: .php");
       }else{
       //header("Location: category-add.php?alert=3");
       }
-      mysqli_close($link);     
+      mysqli_close($link);
     }
 
 
@@ -213,7 +215,7 @@
                                     <option>Pasay</option>
                                   </select>
                               </div>
-                            </div>  
+                            </div>
 
                             <div class="col-4">
                               <div class="form-group">
@@ -223,7 +225,7 @@
                                   </select>
                               </div>
                             </div>
-                         
+
                             <div class="col-4">
                               <div class="form-group">
                                   <label>Purpose</label>
@@ -261,7 +263,7 @@
                             <label>Suffix</label>
                             <input type="text" class="form-control" name="suffix" placeholder="">
                             </div>
-                          </div>                            
+                          </div>
                         </div>
 
                         <div class="row">
@@ -456,7 +458,7 @@
                           </div>
                         </div>
 
-                  </div>  
+                  </div>
                   <div class="card-footer">
                   <button type="submit" class="btn btn-success">Submit</button>
                 </div>
