@@ -58,6 +58,105 @@ if($result = mysqli_query($link, $query)){
   echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
 }
 
+//if Update
+if ($_SERVER["REQUEST_METHOD"] == "POST"){
+
+  $police_station = test_input($_POST['police_station']);
+  $application_type = test_input($_POST['application_type']);
+  $purpose = test_input($_POST['purpose']);
+  $first_name = test_input($_POST['first_name']);
+  $middle_name = test_input($_POST['middle_name']);
+  $last_name = test_input($_POST['last_name']);
+  $suffix = test_input($_POST['suffix']);
+  $address = test_input($_POST['address']);
+  $dob = test_input($_POST['dob']);
+  $pob = test_input($_POST['pob']);
+  $gender = test_input($_POST['gender']);
+  $nationality = test_input($_POST['nationality']);
+  $civil_status = test_input($_POST['civil_status']);
+  $religion = test_input($_POST['religion']);
+  $height = test_input($_POST['height']);
+  $weight = test_input($_POST['weight']);
+  $hair_color = test_input($_POST['hair_color']);
+  $eye_color = test_input($_POST['eye_color']);
+  $contact_no = test_input($_POST['contact_no']);
+  $mole = test_input($_POST['mole']);
+  $scar = test_input($_POST['scar']);
+  $tattoo = test_input($_POST['tattoo']);
+  $birthmark = test_input($_POST['birthmark']);
+  $harelip = test_input($_POST['harelip']);
+  $skin_tag = test_input($_POST['skin_tag']);
+  $e_contact_person = test_input($_POST['e_contact_person']);
+  $e_contact_no = test_input($_POST['e_contact_person']);
+
+  if(empty($alertMessage)){
+    $IDtype = "AP";
+    $m = date('m');
+    $y = date('y');
+    $d = date('d');
+    $asd = "SELECT MAX(id) FROM applicant";
+    $qry = mysqli_query($link,$asd); // Get the latest ID
+    $resulta = mysqli_fetch_array($qry);
+    $newID = $resulta['MAX(id)'] + 1; //Get the latest ID then Add 1
+    $custID = str_pad($newID, 7, '0', STR_PAD_LEFT); //Prepare custom ID with Paddings
+    $custnewID = $IDtype.$y.$custID; //Prepare custom ID
+    $ecoded_by = $_SESSION["username"];
+
+    $query = "UPDATE applicant
+    SET custID = '$custnewID',
+    police_station = '$police_station',
+    application_type = '$application_type',
+    purpose = '$purpose',
+    first_name = '$first_name',
+    middle_name = '$middle_name',
+    last_name = '$last_name',
+    suffix = '$suffix',
+    address = '$address',
+    dob = '$dob',
+    pob = '$pob',
+    gender = '$gender',
+    nationality = '$nationality',
+    civil_status = '$civil_status',
+    religion = '$religion',
+    height = '$height',
+    weight = '$weight',
+    hair_color = '$hair_color',
+    eye_color = '$eye_color',
+    contact_no = '$contact_no',
+    mole = '$mole',
+    scar = '$scar',
+    tattoo = '$tattoo',
+    birthmark = '$birthmark',
+    harelip = '$harelip',
+    skin_tag = '$skin_tag',
+    e_contact_person = '$e_contact_person',
+    e_contact_no = '$e_contact_no',
+    application_status = 'Pending',
+    payment_status = 'Unpaid',
+    encoding_mode = 'Walkin',
+    encoded_by = '$encoded_by')";
+
+    $result = mysqli_query($link, $query) or die(mysqli_error($link)); //Execute  insert query
+
+    if($result){
+      //echo "<script>alert('5');</script>";
+    echo "updated";
+    }else{
+    //header("Location: category-add.php?alert=3");
+    }
+    mysqli_close($link);
+  }
+
+
+}
+
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -94,7 +193,7 @@ if($result = mysqli_query($link, $query)){
                   <h3 class="card-title">Applicant Details</h3>
                 </div>
                 <div class="card-body">
-                  <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                  <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>?id=<?php echo $id; ?>">
 
                     <div class="row">
                       <div class="col-4">
@@ -273,7 +372,6 @@ if($result = mysqli_query($link, $query)){
                           <input type="text" class="form-control" name="contact_no" placeholder="" value="<?php echo $row_e_contact_no; ?>">
                         </div>
                       </div>
-
                     </div>
 
                     <div class="row">
@@ -344,10 +442,10 @@ if($result = mysqli_query($link, $query)){
                         </div>
                       </div>
                     </div>
-                  </form>
 
-                  <button type="submit" class="btn btn-success" >Info Update</button>
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success" >Info Update</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </form>
 
                 </div>
               </div>
