@@ -210,8 +210,8 @@
                       <div class="row">
                             <div class="col-4">
                               <div class="form-group">
-                                  <label>Police Station</label>
-                                  <select class="form-control" name="police_station">
+                                  <label>Police Station<span class="text-red">*</span></label>
+                                  <select class="form-control" name="police_station" required>
                                     <option>Pasay</option>
                                   </select>
                               </div>
@@ -219,8 +219,8 @@
 
                             <div class="col-4">
                               <div class="form-group">
-                                  <label>Application Type</label>
-                                  <select class="form-control" name="application_type">
+                                  <label>Application Type<span class="text-red">*</span></label>
+                                  <select class="form-control" name="application_type" required>
                                     <option>Police Clearance</option>
                                   </select>
                               </div>
@@ -228,8 +228,8 @@
 
                             <div class="col-4">
                               <div class="form-group">
-                                  <label>Purpose</label>
-                                  <select class="form-control" name="purpose">
+                                  <label>Purpose<span class="text-red">*</span></label>
+                                  <select class="form-control" name="purpose" required>
                                     <option>Bank Requirements</option>
                                   </select>
                               </div>
@@ -239,29 +239,29 @@
                         <div class="row">
                           <div class="col-3">
                             <div class="form-group">
-                            <label>First Name</label>
-                            <input type="text" class="form-control" name="first_name" placeholder="">
+                            <label>First Name <span class="text-red">*</span></label>
+                            <input type="text" class="form-control" name="first_name" placeholder="" oninput="upperCase(this)" required>
                             </div>
                           </div>
 
                           <div class="col-3">
                             <div class="form-group">
                             <label>Middle Name</label>
-                            <input type="text" class="form-control" name="middle_name" placeholder="">
+                            <input type="text" class="form-control" name="middle_name" placeholder="" oninput="upperCase(this)"> 
                             </div>
                           </div>
 
                           <div class="col-3">
                             <div class="form-group">
-                            <label>Last Name</label>
-                            <input type="text" class="form-control" name="last_name" placeholder="">
+                            <label>Last Name<span class="text-red">*</span></label>
+                            <input type="text" class="form-control" name="last_name" placeholder="" oninput="upperCase(this)" required>
                             </div>
                           </div>
 
                           <div class="col-3">
                             <div class="form-group">
                             <label>Suffix</label>
-                            <input type="text" class="form-control" name="suffix" placeholder="">
+                            <input type="text" class="form-control" name="suffix" placeholder="JR. SR. III" oninput="upperCase(this)">
                             </div>
                           </div>
                         </div>
@@ -269,8 +269,8 @@
                         <div class="row">
                           <div class="col-12">
                             <div class="form-group">
-                            <label>Address</label>
-                            <input type="text" class="form-control" name="address" placeholder="">
+                            <label>Address<span class="text-red">*</span></label>
+                            <input type="text" class="form-control" name="address" placeholder="" oninput="upperCase(this)" required>
                             </div>
                           </div>
                         </div>
@@ -280,12 +280,12 @@
 
                           <div class="col-3">
                             <div class="form-group">
-                              <label>Date of Birth</label>
+                              <label>Date of Birth<span class="text-red">*</span></label>
                               <div class="input-group">
                                 <div class="input-group-prepend">
                                   <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                                 </div>
-                                <input type="text" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="mm/dd/yyyy" name="dob" data-mask>
+                                <input type="text" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="mm/dd/yyyy" name="dob" data-mask required="">
                               </div>
                               <!-- /.input group -->
                             </div>
@@ -293,14 +293,14 @@
 
                           <div class="col-3">
                             <div class="form-group">
-                            <label>Place of Birth</label>
-                            <input type="text" class="form-control" name="pob" placeholder="">
+                            <label>Place of Birth<span class="text-red">*</span></label>
+                            <input type="text" class="form-control" name="pob" placeholder="" oninput="upperCase(this)" required>
                             </div>
                           </div>
 
                           <div class="col-3">
                             <div class="form-group">
-                            <label>Gender</label>
+                            <label>Gender<span class="text-red">*</span></label>
                             <select class="form-control" name="gender">
                                 <option value="MALE">MALE</option>
                                 <option value="FEMALE">FEMALE</option>
@@ -310,8 +310,8 @@
 
                           <div class="col-3">
                             <div class="form-group">
-                            <label>Nationality</label>
-                            <select class="form-control" name="nationality">
+                            <label>Nationality<span class="text-red">*</span></label>
+                            <select class="form-control" name="nationality" required="">
                                 <?php include('country.php'); ?>
                             </select>
                             </div>
@@ -321,8 +321,8 @@
                         <div class="row">
                           <div class="col-3">
                             <div class="form-group">
-                            <label>Civil Status</label>
-                            <select class="form-control" name="civil_status">
+                            <label>Civil Status<span class="text-red">*</span></label>
+                            <select class="form-control" name="civil_status" required="">
                                 <option>SINGLE</option>
                                 <option>MARRIED</option>
                                 <option>SEPERATED</option>
@@ -335,16 +335,16 @@
 
                           <div class="col-3">
                             <div class="form-group">
-                            <label>Religion</label>
-                            <input type="text" class="form-control" name="religion" placeholder="">
+                            <label>Religion<span class="text-red">*</span></label>
+                            <input type="text" class="form-control" name="religion" placeholder="" required="">
                             </div>
                           </div>
 
                           <div class="col-3">
                             <div class="form-group">
-                              <label>Height</label>
+                              <label>Height<span class="text-red">*</span></label>
                               <div class="input-group">
-                                  <input type="text" class="form-control" name="height" placeholder="">
+                                  <input type="text" class="form-control" name="height" placeholder="" required="">
                                   <div class="input-group-append">
                                     <span class="input-group-text">cm</span>
                                   </div>
@@ -354,9 +354,9 @@
 
                           <div class="col-3">
                             <div class="form-group">
-                              <label>Weight</label>
+                              <label>Weight<span class="text-red">*</span></label>
                               <div class="input-group">
-                                  <input type="text" class="form-control" name="weight" placeholder="">
+                                  <input type="text" class="form-control" name="weight" placeholder="" required>
                                   <div class="input-group-append">
                                     <span class="input-group-text">kg</span>
                                   </div>
@@ -368,22 +368,22 @@
                         <div class="row">
                           <div class="col-3">
                             <div class="form-group">
-                            <label>Hair Color</label>
-                            <input type="text" class="form-control" name="hair_color" placeholder="">
+                            <label>Hair Color<span class="text-red">*</span></label>
+                            <input type="text" class="form-control" name="hair_color" placeholder="" oninput="upperCase(this)" required>
                             </div>
                           </div>
 
                           <div class="col-3">
                             <div class="form-group">
-                            <label>Eye Color</label>
-                            <input type="text" class="form-control" name="eye_color" placeholder="">
+                            <label>Eye Color<span class="text-red">*</span></label>
+                            <input type="text" class="form-control" name="eye_color" placeholder="" oninput="upperCase(this)" required>
                             </div>
                           </div>
 
                           <div class="col-3">
                             <div class="form-group">
-                            <label>Contact No.</label>
-                            <input type="text" class="form-control" name="contact_no" placeholder="">
+                            <label>Contact No.<span class="text-red">*</span></label>
+                            <input type="text" class="form-control" name="contact_no" placeholder="" required> 
                             </div>
                           </div>
 
@@ -393,7 +393,7 @@
                           <div class="col-6">
                             <div class="form-group">
                             <label>Nunal (Mole)</label>
-                            <input type="text" class="form-control" name="nunal" placeholder="">
+                            <input type="text" class="form-control" name="nunal" placeholder="" oninput="upperCase(this)">
                             </div>
                           </div>
                         </div>
@@ -402,7 +402,7 @@
                           <div class="col-6">
                             <div class="form-group">
                             <label>Scar (Peklat)</label>
-                            <input type="text" class="form-control" name="scar" placeholder="">
+                            <input type="text" class="form-control" name="scar" placeholder="" oninput="upperCase(this)">
                             </div>
                           </div>
                         </div>
@@ -411,7 +411,7 @@
                           <div class="col-6">
                             <div class="form-group">
                             <label>Tattoo</label>
-                            <input type="text" class="form-control" name="tattoo" placeholder="">
+                            <input type="text" class="form-control" name="tattoo" placeholder="" oninput="upperCase(this)">
                             </div>
                           </div>
                         </div>
@@ -420,7 +420,7 @@
                           <div class="col-6">
                             <div class="form-group">
                             <label>Birthmark (Balat)</label>
-                            <input type="text" class="form-control" name="birthmark" placeholder="">
+                            <input type="text" class="form-control" name="birthmark" placeholder="" oninput="upperCase(this)">
                             </div>
                           </div>
                         </div>
@@ -429,7 +429,7 @@
                           <div class="col-6">
                             <div class="form-group">
                             <label>Harelip (Bingot)</label>
-                            <input type="text" class="form-control" name="harelip" placeholder="">
+                            <input type="text" class="form-control" name="harelip" placeholder="" oninput="upperCase(this)">
                             </div>
                           </div>
                         </div>
@@ -438,7 +438,7 @@
                           <div class="col-6">
                             <div class="form-group">
                             <label>Skin Tag (Kuntil)</label>
-                            <input type="text" class="form-control" name="skin_tag" placeholder="">
+                            <input type="text" class="form-control" name="skin_tag" placeholder="" oninput="upperCase(this)">
                             </div>
                           </div>
                         </div>
@@ -446,14 +446,14 @@
                         <div class="row">
                           <div class="col-4">
                             <div class="form-group">
-                            <label>Contact Person</label>
-                            <input type="text" class="form-control" name="e_contact_person" placeholder="">
+                            <label>Emergency Contact Person<span class="text-red">*</span></label>
+                            <input type="text" class="form-control" name="e_contact_person" placeholder="" oninput="upperCase(this)" required>
                             </div>
                           </div>
                           <div class="col-4">
                             <div class="form-group">
-                            <label>Contact No.</label>
-                            <input type="text" class="form-control" name="e_contact_no" placeholder="">
+                            <label>Emergency Contact No.<span class="text-red">*</span></label>
+                            <input type="text" class="form-control" name="e_contact_no" placeholder="" oninput="upperCase(this)" required>
                             </div>
                           </div>
                         </div>
