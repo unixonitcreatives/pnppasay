@@ -54,6 +54,13 @@
 <script src="dist/js/demo.js"></script>
 
 <script>
+    function upperCase(a){
+    setTimeout(function(){
+        a.value = a.value.toUpperCase();
+    }, 1);
+
+  }
+  
   $(function () {
     //Initialize Select2 Elements
     $('.select2').select2()
