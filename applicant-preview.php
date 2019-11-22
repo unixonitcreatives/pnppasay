@@ -5,9 +5,10 @@
 require_once "config.php";
 
 $id = $_GET['id'];
+$encoder = $_GET['encoded_by'];
 
 // Attempt select query execution
-$query = "SELECT * FROM applicant WHERE id='$id'";
+$query = "SELECT * FROM applicant WHERE id='$id' AND encoded_by='$encoder' ";
 if($result = mysqli_query($link, $query)){
   if(mysqli_num_rows($result) > 0){
 
@@ -39,14 +40,14 @@ if($result = mysqli_query($link, $query)){
       $row_skin_tag = $row['skin_tag'];
       $row_e_contact_person = $row['e_contact_person'];
       $row_e_contact_no = $row['e_contact_no'];
-      $row_application_status = $row['application_status'];
-      $row_payment_status = $row['payment_status'];
-      $row_encoding_mode = $row['encoding_mode'];
-      $row_encoded_by = $row['encoded_by'];
-      $row_encoded_at = $row['encoded_at'];
-      $row_verified_by = $row['verified_by'];
-      $row_verified_at = $row['verified_at'];
-      $row_paid_to = $row['paid_to'];
+      //$row_application_status = $row['application_status'];
+      //$row_payment_status = $row['payment_status'];
+      //$row_encoding_mode = $row['encoding_mode'];
+      //$row_encoded_by = $row['encoded_by'];
+      //$row_encoded_at = $row['encoded_at'];
+      //$row_verified_by = $row['verified_by'];
+      //$row_verified_at = $row['verified_at'];
+      //$row_paid_to = $row['paid_to'];
     }
 
     // Free result set
@@ -57,6 +58,40 @@ if($result = mysqli_query($link, $query)){
 } else{
   echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
 }
+
+$alertMessage =
+$police_station =
+$application_type =
+$purpose =
+$first_name =
+$middle_name =
+$last_name =
+$suffix =
+$address =
+$dob =
+$pob =
+$gender =
+$nationality =
+$civil_status =
+$religion =
+$height =
+$weight =
+$hair_color =
+$eye_color =
+$contact_no =
+$mole =
+$scar =
+$tattoo =
+$birthmark =
+$harelip =
+$skin_tag =
+$e_contact_person =
+$e_contact_no =
+$application_status =
+$payment_status =
+$encoding_mode =
+$encoded_by =
+$encoded_at = "";
 
 //if Update
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -130,21 +165,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     harelip = '$harelip',
     skin_tag = '$skin_tag',
     e_contact_person = '$e_contact_person',
-    e_contact_no = '$e_contact_no',
-    application_status = 'Pending',
-    payment_status = 'Unpaid',
-    encoding_mode = 'Walkin',
-    encoded_by = '$encoded_by')";
+    e_contact_no = '$e_contact_no')";
+    //application_status = 'Pending',
+    //payment_status = 'Unpaid',
+    //encoding_mode = 'Walkin',
+    //encoded_by = '$ecoded_by')";
 
     $result = mysqli_query($link, $query) or die(mysqli_error($link)); //Execute  insert query
 
     if($result){
       //echo "<script>alert('5');</script>";
-    echo "updated";
+      header("Location: result.php");
     }else{
     //header("Location: category-add.php?alert=3");
     }
-    mysqli_close($link);
+    //mysqli_close($link);
   }
 
 
@@ -193,20 +228,20 @@ function test_input($data) {
                   <h3 class="card-title">Applicant Details</h3>
                 </div>
                 <div class="card-body">
-                  <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>?id=<?php echo $id; ?>">
+                  <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>?id=<?php echo $id; ?>&&encoded_by<?php echo $encoder; ?>">
 
                     <div class="row">
                       <div class="col-4">
                         <div class="form-group">
                           <label>Police Station</label>
-                          <input type="text" class="form-control" name="police_station" value="<?php echo $row_police_station; ?>" disabled>
+                          <input type="text" class="form-control" name="police_station" value="<?php echo $row_police_station; ?>" >
                         </div>
                       </div>
 
                       <div class="col-4">
                         <div class="form-group">
                           <label>Application Type</label>
-                          <input type="text" class="form-control" name="police_station" value="<?php echo $row_application_type; ?>" disabled>
+                          <input type="text" class="form-control" name="application_type" value="<?php echo $row_application_type; ?>" >
                         </div>
                       </div>
 
@@ -378,7 +413,7 @@ function test_input($data) {
                       <div class="col-6">
                         <div class="form-group">
                           <label>Nunal (Mole)</label>
-                          <input type="text" class="form-control" name="nunal" placeholder="" value="<?php echo $row_mole; ?>">
+                          <input type="text" class="form-control" name="mole" placeholder="" value="<?php echo $row_mole; ?>">
                         </div>
                       </div>
                     </div>

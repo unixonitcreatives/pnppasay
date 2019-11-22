@@ -147,7 +147,7 @@
       'Pending',
       'Unpaid',
       'Walkin',
-      '$encoded_by')";
+      '$ecoded_by')";
 
       $result = mysqli_query($link, $query) or die(mysqli_error($link)); //Execute  insert query
 
@@ -247,7 +247,7 @@
                           <div class="col-3">
                             <div class="form-group">
                             <label>Middle Name</label>
-                            <input type="text" class="form-control" name="middle_name" placeholder="" oninput="upperCase(this)"> 
+                            <input type="text" class="form-control" name="middle_name" placeholder="" oninput="upperCase(this)">
                             </div>
                           </div>
 
@@ -383,7 +383,7 @@
                           <div class="col-3">
                             <div class="form-group">
                             <label>Contact No.<span class="text-red">*</span></label>
-                            <input type="text" class="form-control" name="contact_no" placeholder="" required> 
+                            <input type="text" class="form-control" name="contact_no" placeholder="" required>
                             </div>
                           </div>
 
@@ -393,7 +393,7 @@
                           <div class="col-6">
                             <div class="form-group">
                             <label>Nunal (Mole)</label>
-                            <input type="text" class="form-control" name="nunal" placeholder="" oninput="upperCase(this)">
+                            <input type="text" class="form-control" name="mole" placeholder="" oninput="upperCase(this)">
                             </div>
                           </div>
                         </div>
