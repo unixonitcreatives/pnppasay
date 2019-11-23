@@ -63,7 +63,7 @@
                               echo "<td>" . $row['encoded_by'] ." ". $row['encoded_at'] . "</td>";
                               echo "<td>";
                               echo "
-                              <a href='applicant-preview.php?id=".$row['id']."&&encoded_by=".$row['encoded_by']."' 'type='button' class='btn btn-success btn-sm'>Update</a>";
+                              <a href='applicant-preview.php?id=".$row['id']." 'type='button' class='btn btn-success btn-sm'>Update</a>";
 
                               echo "
                               <button type='button' class='btn btn-primary btn-sm' data-toggle='modal' data-target='#viewmodal'>

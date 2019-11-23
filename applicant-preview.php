@@ -5,10 +5,10 @@
 require_once "config.php";
 
 $id = $_GET['id'];
-$encoder = $_GET['encoded_by'];
+
 
 // Attempt select query execution
-$query = "SELECT * FROM applicant WHERE id='$id' AND encoded_by='$encoder' ";
+$query = "SELECT * FROM applicant WHERE id='$id' ";
 if($result = mysqli_query($link, $query)){
   if(mysqli_num_rows($result) > 0){
 
@@ -40,14 +40,14 @@ if($result = mysqli_query($link, $query)){
       $row_skin_tag = $row['skin_tag'];
       $row_e_contact_person = $row['e_contact_person'];
       $row_e_contact_no = $row['e_contact_no'];
-      //$row_application_status = $row['application_status'];
-      //$row_payment_status = $row['payment_status'];
-      //$row_encoding_mode = $row['encoding_mode'];
-      //$row_encoded_by = $row['encoded_by'];
-      //$row_encoded_at = $row['encoded_at'];
-      //$row_verified_by = $row['verified_by'];
-      //$row_verified_at = $row['verified_at'];
-      //$row_paid_to = $row['paid_to'];
+      $row_application_status = $row['application_status'];
+      $row_payment_status = $row['payment_status'];
+      $row_encoding_mode = $row['encoding_mode'];
+      $row_encoded_by = $row['encoded_by'];
+      $row_encoded_at = $row['encoded_at'];
+      $row_verified_by = $row['verified_by'];
+      $row_verified_at = $row['verified_at'];
+      $row_paid_to = $row['paid_to'];
     }
 
     // Free result set
@@ -122,20 +122,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
   $harelip = test_input($_POST['harelip']);
   $skin_tag = test_input($_POST['skin_tag']);
   $e_contact_person = test_input($_POST['e_contact_person']);
-  $e_contact_no = test_input($_POST['e_contact_person']);
+  $e_contact_no = test_input($_POST['e_contact_no']);
 
   if(empty($alertMessage)){
-    $IDtype = "AP";
-    $m = date('m');
-    $y = date('y');
-    $d = date('d');
-    $asd = "SELECT MAX(id) FROM applicant";
-    $qry = mysqli_query($link,$asd); // Get the latest ID
-    $resulta = mysqli_fetch_array($qry);
-    $newID = $resulta['MAX(id)'] + 1; //Get the latest ID then Add 1
-    $custID = str_pad($newID, 7, '0', STR_PAD_LEFT); //Prepare custom ID with Paddings
-    $custnewID = $IDtype.$y.$custID; //Prepare custom ID
-    $ecoded_by = $_SESSION["username"];
 
     $query = "UPDATE applicant
     SET custID = '$custnewID',
@@ -165,17 +154,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     harelip = '$harelip',
     skin_tag = '$skin_tag',
     e_contact_person = '$e_contact_person',
-    e_contact_no = '$e_contact_no')";
-    //application_status = 'Pending',
-    //payment_status = 'Unpaid',
-    //encoding_mode = 'Walkin',
-    //encoded_by = '$ecoded_by')";
+    e_contact_no = '$e_contact_no',
+    application_status = 'Pending',
+    payment_status = 'Unpaid',
+    encoding_mode = 'Walkin',
+    encoded_by = '$ecoded_by' WHERE id='$id' ";
 
     $result = mysqli_query($link, $query) or die(mysqli_error($link)); //Execute  insert query
 
     if($result){
       //echo "<script>alert('5');</script>";
-      header("Location: result.php");
+      header("Location: result.php?alert=success");
     }else{
     //header("Location: category-add.php?alert=3");
     }
@@ -228,7 +217,7 @@ function test_input($data) {
                   <h3 class="card-title">Applicant Details</h3>
                 </div>
                 <div class="card-body">
-                  <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>?id=<?php echo $id; ?>&&encoded_by<?php echo $encoder; ?>">
+                  <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>?id=<?php echo $id; ?>">
 
                     <div class="row">
                       <div class="col-4">
@@ -404,7 +393,7 @@ function test_input($data) {
                       <div class="col-3">
                         <div class="form-group">
                           <label>Contact No.</label>
-                          <input type="text" class="form-control" name="contact_no" placeholder="" value="<?php echo $row_e_contact_no; ?>">
+                          <input type="text" class="form-control" name="contact_no" placeholder="" value="<?php echo $row_contact_no; ?>">
                         </div>
                       </div>
                     </div>
